@@ -1,0 +1,20 @@
+---
+    -   name: Default setup
+        hosts: linux
+        become: yes
+        tasks:
+            -   name: Create appl directory
+                file:
+                    path: ~/appl
+                    state: directory
+            -   name: Create apps directory
+                file:
+                    path: ~/apps
+                    state: directory
+            -   name: update apt cashe
+                apt:
+                    update_cache: true
+            -   name: install docker.io with apt
+                apt:
+                    name: docker.io
+                    state: latest
